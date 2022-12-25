@@ -23,7 +23,7 @@ class EmployeePayrollTest {
      * and save number of employee in arrayList of employeePayrollData type
      */
     @Test
-    public void givenNewSalaryForEmployee_WhenUpdated_ShouldSyncWithDb() {
+    public void givenNewSalaryForEmployee_WhenUpdated_ShouldSyncWithDb() throws EmployeePayrollCustomException {
 
         EmployeePayroll employeePayroll = new EmployeePayroll();
         /*
@@ -32,6 +32,23 @@ class EmployeePayrollTest {
          */
         List<EmployeePayrollData> ExpectedEmployeePayroll = employeePayroll.readEmployeePayrollData();
         List<EmployeePayrollData> result = employeePayroll.updateBasic_pay("Tersia", 3000000.00);
+        Assertions.assertEquals(ExpectedEmployeePayroll, result);
+    }
+
+    /*
+     * TestCase to check salary of employee is updated in the sql table by using readEmployeePayrollData method
+     * and save number of employee in arrayList of employeePayrollData type
+     */
+    @Test
+    public void givenNewBasic_PayForEmployee_WhenUpdated_ShouldSyncWithDb() throws EmployeePayrollCustomException {
+
+        EmployeePayroll employeePayroll = new EmployeePayroll();
+        /*
+         * Saving the updated salary into the result arrayList and the read data of the employeePayroll in
+         * expectedEmployeePayrollData
+         */
+        List<EmployeePayrollData> ExpectedEmployeePayroll = employeePayroll.readEmployeePayrollData();
+        List<EmployeePayrollData> result = employeePayroll.updateBasic_pay("Tersia", 300000.00);
         Assertions.assertEquals(ExpectedEmployeePayroll, result);
     }
 }

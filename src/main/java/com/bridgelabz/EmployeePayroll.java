@@ -58,7 +58,7 @@ public class EmployeePayroll {
         return employeePayrollDataList;
     }
 
-    public List<EmployeePayrollData> updateBasic_pay(String name, double basic_pay) {
+    public List<EmployeePayrollData> updateBasic_pay(String name, double basic_pay) throws EmployeePayrollCustomException {
 
         String jdbcUrl = "jdbc:mysql://localhost:3306/payroll_service_new?characterEncoding=utf8";
         String username = "root";
@@ -111,7 +111,10 @@ public class EmployeePayroll {
             }
             connection.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            /*
+             * Throwing the custom exception if got error while updating salary
+             */
+            throw new EmployeePayrollCustomException("Error while updating the salary");
         }
         return employeePayrollDataList;
     }
