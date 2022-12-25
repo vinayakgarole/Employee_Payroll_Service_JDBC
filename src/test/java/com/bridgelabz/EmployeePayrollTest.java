@@ -9,46 +9,13 @@ class EmployeePayrollTest {
 
     @Test
     /*
-     * TestCase to check number of employees in the sql table by using readEmployeePayrollData method
+     * TestCase to check number of employees in Particular dat range in sql table by using readEmployeePayrollData method
      * and save number of employee in arrayList of employeePayrollData type
      */
-    public void givenEmpPayrollInDB_WhenRetrieved_ShouldMatchEmployeeCount() {
+
+    public void givenEmpPayrollDB_WhenRetrieved_ShouldGiveEmployeeInDataRange() {
         EmployeePayroll employeePayroll = new EmployeePayroll();
         List<EmployeePayrollData> employeePayrollData = employeePayroll.readEmployeePayrollData();
         Assertions.assertEquals(4, employeePayrollData.size());
-    }
-
-    /*
-     * TestCase to check salary of employee is updated in the sql table by using readEmployeePayrollData method
-     * and save number of employee in arrayList of employeePayrollData type
-     */
-    @Test
-    public void givenNewSalaryForEmployee_WhenUpdated_ShouldSyncWithDb() throws EmployeePayrollCustomException {
-
-        EmployeePayroll employeePayroll = new EmployeePayroll();
-        /*
-         * Saving the updated salary into the result arrayList and the read data of the employeePayroll in
-         * expectedEmployeePayrollData
-         */
-        List<EmployeePayrollData> ExpectedEmployeePayroll = employeePayroll.readEmployeePayrollData();
-        List<EmployeePayrollData> result = employeePayroll.updateBasic_pay("Tersia", 3000000.00);
-        Assertions.assertEquals(ExpectedEmployeePayroll, result);
-    }
-
-    /*
-     * TestCase to check salary of employee is updated in the sql table by using readEmployeePayrollData method
-     * and save number of employee in arrayList of employeePayrollData type
-     */
-    @Test
-    public void givenNewBasic_PayForEmployee_WhenUpdated_ShouldSyncWithDb() throws EmployeePayrollCustomException {
-
-        EmployeePayroll employeePayroll = new EmployeePayroll();
-        /*
-         * Saving the updated salary into the result arrayList and the read data of the employeePayroll in
-         * expectedEmployeePayrollData
-         */
-        List<EmployeePayrollData> ExpectedEmployeePayroll = employeePayroll.readEmployeePayrollData();
-        List<EmployeePayrollData> result = employeePayroll.updateBasic_pay("Tersia", 300000.00);
-        Assertions.assertEquals(ExpectedEmployeePayroll, result);
     }
 }
